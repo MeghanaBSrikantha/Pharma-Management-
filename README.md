@@ -7,7 +7,7 @@ The aim of the project is to help enhance the accuracy and efficiency of a Pharm
 - Design : Defining the table and relationships between the table. (Entry of 20 employee data, 40 customer data and 10 doctor data)
 - To create a simple and optimal application with a relational database to provide pharmacists an improved management of the store as well as provide the customers with all details of their drugs.
 
-**Main Tables : **
+Main Tables: 
 - Pharmacy 
 - Pharmacists  
 - Medicines
