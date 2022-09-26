@@ -5,7 +5,9 @@ Steps of the project:
 - Identify the scope of the project.
 - Gather information and analyze various types of medicines for common diseases like Flu, fever, etc,. ( Approximately 150 entries ) 
 - Design : Defining the table and relationships between the table. (Entry of 20 employee data, 40 customer data and 10 doctor data)
-- To create a simple and optimal application with a relational database to provide pharmacists an improved management of the store as well as provide the customers with all details of their drugs.  Main Tables : 
+- To create a simple and optimal application with a relational database to provide pharmacists an improved management of the store as well as provide the customers with all details of their drugs.
+
+Main Tables : 
 - Pharmacy 
 - Pharmacists  
 - Medicines
