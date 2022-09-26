@@ -1,4 +1,5 @@
 **# Pharma-Management-**
+
 The aim of the project is to help enhance the accuracy and efficiency of a Pharmaceutical store. A database of available medicines is created for both the customers and Pharmacists to access. Customers can look up for information on the required medicines like the name, diseases it can cure and prices. This system will help Pharmacists to effectively manage the pharmaceutical store and will also have access to the prescriptions given to the customers by the doctors.
 
 **Steps of the project:**
