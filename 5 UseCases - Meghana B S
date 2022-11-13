@@ -117,3 +117,8 @@ FROM Medicine m
 WHERE 
 m.medicine_Quantity<= 10;
 
+UseCase 5: View the highest priced medicine ordered by the user through twitter.
+
+SELECT twitter_handle, MAX(medicine_price)
+FROM Twitter_Order
+GROUP BY twitter_handle;
