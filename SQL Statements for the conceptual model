@@ -1,0 +1,89 @@
+CREATE TABLE `User` (
+  `twitter_handle` VARCHAR(10),
+  `user_name` VARCHAR(20),
+  `profile_picture_url` VARCHAR(200),
+  `description` VARCHAR(100),
+  `following_count` INT,
+  `follower_count` INT,
+  PRIMARY KEY  (`twitter_handle`)
+);
+
+CREATE TABLE `Tweets` (
+  `tweet_ID` INT NOT NULL AUTO_INCREMENT,
+  `twitter_handle` VARCHAR(10),
+  `tweet_text` VARCHAR(140),
+  `profile_picture_url` VARCHAR(200),
+  `created_at` DATETIME,
+  PRIMARY KEY  (`tweet_ID`)
+);
+
+CREATE TABLE `Tweet_Tags` (
+  `tweet_ID` INT NOT NULL,
+  `tweet_tag` VARCHAR(20),
+  PRIMARY KEY  (`tweet_ID`)
+);
+
+CREATE TABLE `Tweet_Mentions` (
+  `tweet_ID` INT NOT NULL,
+  `target_user` VARCHAR(10),
+  `source_user` VARCHAR(10),
+  PRIMARY KEY  (`tweet_ID`)
+);
+
+CREATE TABLE `Tweet_Url` (
+  `tweet_ID` INT NOT NULL,
+  ‘Medicine_URL’ VARCHAR(200),
+  PRIMARY KEY  (`tweet_ID`)
+);
+
+CREATE TABLE `CustomerHealth_Account` (
+  `twitter_handle` VARCHAR(10) NOT NULL,
+  `Account_password` VARCHAR(10),
+  `HealthCard_Number` INT,
+  PRIMARY KEY  (`Twitter_handle`)
+);
+
+CREATE TABLE `Pharmacist_Account` (
+  `twitter_handle` VARCHAR(10) NOT NULL,
+  `Account_password` VARCHAR(10),
+  `Pharmacy_Number` INT,
+  PRIMARY KEY  (`Twitter_handle`)
+);
+
+CREATE TABLE `Medicine` (
+  `medicine_ID` INT NOT NULL AUTO_INCREMENT,
+  `medicine_name` VARCHAR(20),
+  `medicine_url` VARCHAR(200),
+  `medicine_price` FLOAT,
+  `medicine_description` VARCHAR(500),
+  `medicine_Quantity` INT,
+  PRIMARY KEY  (`medicine_id`)
+);
+
+CREATE TABLE `Twitter_Order` (
+  `twitterOrder_ID` INT NOT NULL AUTO_INCREMENT,
+  `tweet_ID` INT,
+  `twitter_handle` VARCHAR(10),
+  `medicine_id` INT,
+  `medicine_url` VARCHAR(200),
+  `medicine_price` FLOAT,
+  PRIMARY KEY  (`twitterOrder_ID`)
+);
+
+CREATE TABLE `Medicine_Cart` (
+  `twitterOrder_ID` INT NOT NULL AUTO_INCREMENT,
+  `total_amount` FLOAT,
+  `twitter_handle` VARCHAR(10),
+  `no_of_items` INT,
+  PRIMARY KEY  (`twitterOrder_ID`)
+);
+
+CREATE TABLE `Payment` (
+  `payment_ID` INT NOT NULL AUTO_INCREMENT,
+  `twitterOrder_ID` INT,
+  `twitter_handle` VARCHAR(10),
+  `paid_on` DATETIME,
+  `total_amount` FLOAT,
+  `payment_details` VARCHAR(100),
+  PRIMARY KEY  (`payment_ID`)
+);
