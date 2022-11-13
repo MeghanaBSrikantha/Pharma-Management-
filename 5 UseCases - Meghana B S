@@ -56,6 +56,20 @@ Steps:
 - Alternate Path : Medicine is available and is more than 10 number
 - Error: Medicine required is wrong
 
+Use Case 5: View the highest priced medicines ordered by the user through twitter.
+
+Description: User can view their highest priced medicine ordered through twitter. 
+Actor: User 
+Precondition: Users must be logged into their accounts to view the highest priced medicine
+
+Steps:
+- Actor action: Users view the highest priced medicine ordered
+- System Responses: System will check through all the orders and provide the highest priced.
+- Post Condition: system will display the highest priced medicine out of all orders.
+- Alternate Path : There are no previous order hence no highest priced.
+- Error: No highest priced medicine
+
+
 
 
 
