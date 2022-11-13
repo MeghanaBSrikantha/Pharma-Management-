@@ -1,0 +1,93 @@
+
+ 
+ALTER TABLE `Tweets`
+ADD CONSTRAINT `Tweets_fk1` FOREIGN KEY (`twitter_handle`)
+REFERENCES User(`twitter_handle`);
+ 
+ALTER TABLE `Tweets`
+ADD CONSTRAINT `Tweets_fk2` FOREIGN KEY (`profile_picture_URL`)
+REFERENCES User(`profile_picture_URL`);
+ 
+Constraint for Tweet_Tags table:
+ 
+ALTER TABLE `Tweet_Tags`
+ADD CONSTRAINT `Tweet_Tags_fk1` FOREIGN KEY (`tweet_ID`)
+REFERENCES Tweets(`tweet_ID`);
+ 
+Constraint for Tweet_Mentions table:
+ 
+ALTER TABLE `Tweet_Mentions`
+ADD CONSTRAINT `Tweet_Mentions_fk1` FOREIGN KEY (`tweet_ID`)
+REFERENCES Tweets(`tweet_ID`);
+ 
+ALTER TABLE `Tweet_Mentions`
+ADD CONSTRAINT `Tweet_Mentions_fk2` FOREIGN KEY (`target_user`)
+REFERENCES User(`twitter_handle`);
+ 
+ALTER TABLE `Tweet_Mentions`
+ADD CONSTRAINT `Tweet_Mentions_fk3` FOREIGN KEY (`source_user`)
+REFERENCES User(`twitter_handle`);
+ 
+Constraint for Tweet_URL table:
+ 
+ALTER TABLE `Tweet_URL`
+ADD CONSTRAINT `Tweet_URL_fk1` FOREIGN KEY (`tweet_ID`)
+REFERENCES Tweets(`tweet_ID`);
+ 
+Constraint for CustomerHealth_Account table:
+ 
+ALTER TABLE `CustomerHealth_Account`
+ADD CONSTRAINT `CustomerHealth_Account_fk1` FOREIGN KEY (`twitter_handle`)
+REFERENCES User(`twitter_handle`);
+ 
+Constraint for Twitter_Order table:
+ 
+ALTER TABLE `twitterOrder_ID`
+ADD CONSTRAINT `TwitterOrder_ID_fk1` FOREIGN KEY (`tweet_ID`)
+REFERENCES Tweet_URL(`tweet_ID`);
+ 
+ALTER TABLE `TwitterOrder_ID`
+ADD CONSTRAINT `TwitterOrder_ID_fk2` FOREIGN KEY (`twitter_handle`)
+REFERENCES Tweets(`twitter_handle`);
+ 
+ 
+ALTER TABLE `TwitterOrder_ID`
+ADD CONSTRAINT `Twitter_Order_fk3` FOREIGN KEY (`medicine_id`)
+REFERENCES CustomerHealth_Account(`medicine_id`);
+ 
+ALTER TABLE `TwitterOrder_ID`
+ADD CONSTRAINT `Twitter_Order_fk4` FOREIGN KEY (`medicine_URL`)
+REFERENCES Tweet_URL(`medicine_URL`);
+ 
+ALTER TABLE `TwitterOrder_ID`
+ADD CONSTRAINT `twitterOrder_ID_fk5` FOREIGN KEY (`medicine_price`)
+REFERENCES CustomerHealth_Account (`medicine_price`);
+ 
+Constraint for Medicine_Cart table:
+ 
+ALTER TABLE `Medicine _Cart`
+ADD CONSTRAINT `Medicine_Cart_fk1` FOREIGN KEY (`twitter_handle`)
+REFERENCES TwitterOrderID(`twitter_handle`);
+ 
+ALTER TABLE `Medicine_Cart `
+ADD CONSTRAINT `Medicine_Cart _fk2` FOREIGN KEY (`TwitterOrder_ID`)
+REFERENCES TwitterOrder_ID(`TwitterOrder_ID`);
+ 
+ALTER TABLE ` Medicine_Cart `
+ADD CONSTRAINT ` Medicine_Cart _fk3` FOREIGN KEY (`twitter_handle`)
+REFERENCES TweetOrder_ID(`twitter_handle`);
+ 
+Constraint for Payment table:
+ 
+ALTER TABLE `Payment`
+ADD CONSTRAINT `Payment_fk1` FOREIGN KEY (`TwitterOrder_ID`)
+REFERENCES CustomerHealth_Cart(`order_id`);
+ 
+ALTER TABLE `Payment`
+ADD CONSTRAINT `Payment_fk2` FOREIGN KEY (`twitter_handle`)
+REFERENCES CustomerHealth_Cart(`twitter_handle`);
+
+ 
+ALTER TABLE `Pharmacist_Account`
+ADD CONSTRAINT ` Pharmacist _Account_fk1` FOREIGN KEY (`twitter_handle`)
+REFERENCES User(`twitter_handle`);
