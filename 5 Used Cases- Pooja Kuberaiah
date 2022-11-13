@@ -1,0 +1,89 @@
+1.UseCase : Login to the Pharmacy Account
+
+Description : Pharmacists must have an account in the Pharmacy Account System to login and
+manage actions in pharmacy.
+Actor : Pharmacists
+Precondition : When a pharmacists need to perform daily tasks or actions on pharmacy system,
+they should have an account in Pharmacy System.
+
+Steps:
+
+Actor Action : Pharmacists logs into the system
+System Response : If Pharmacists login credentials are correct then pharmacist is registered and
+use case ends.
+Post Condition : Pharmacists successfully logs into the system.
+Alternate Path : Pharmacists credentials are incorrect.
+
+2.UseCase: Place an order to buy medicine in Pharmacy
+Actor : User
+Precondition : User must have a unique Twiter handle to tweet
+
+Steps:
+
+Actor Action – User tweets about a medicine to order along with the medicine URL.
+System Responses – An order is made for the medicine that matches the medicine URL
+Post Condition: An order is added to twitter_Order table for the product the user tweeted.
+Alternate Path: The medicine not currently available in the pharmacy
+Error: Medicine Not Available
+
+3.Use Case: View the medicine orders made by a user
+Description: User views the medicines orders made 
+Actor: User
+Precondition: User must have placed at least one previous order for a medicine to view an order
+
+Steps:
+
+Actor action: User views the history of medicines ordered
+System Responses: Displays all the medicine orders made by a user
+Alternate Path: There are no medicines ordered made by a user
+Error: No history of medicine orders available
+
+4.Use Case: View the price for the medicine.
+Description: User views the price for the medicine
+Actor: User
+Precondition: User must have placed the Medicine_ID or the Medicine Name
+
+Steps:
+
+Actor action: User views the price for the medicine
+System Responses: Displays the price for the medicine
+
+SQL STATEMENTS
+Use case 1 : Login to the Pharmacy Account
+INSERT INTO Pharmacy_Account
+((twitter_handle, Account_password, Pharmacy_Number)
+VALUES (@pooja,Poo03,8766);
+INSERT INTO Pharmacy_Account
+((twitter_handle, Account_password, Pharmacy_Number)
+VALUES (@mary,Mary03,8776);
+INSERT INTO Pharmacy_Account
+((twitter_handle, Account_password, Pharmacy_Number)
+VALUES (@alison,alison23,8786);
+
+UseCase 2: Place an order to buy medicine in Pharmacy
+INSERT INTO Tweet
+(tweet_ID, Twitter_handle, tweet_text, profile_picture_url, created_at )
+VALUES (14367, @joe, ‘I would like to purchase https://www.cvs.com/shop/cvs-healthchildren-s-fever-reducing-suppositories-prodid-614142=14367’ , ‘www.facebook.com/joe.smith/ 
+photo.php?fbid=14205’ , 02-11-2022 );
+INSERT INTO Tweet_url
+(tweet_ID, tweet_URL )
+VALUES (14367,‘ https://www.cvs.com/shop/cvs-health-children-s-fever-reducingsuppositories-prodid-614142=14367’);
+INSERT INTO Twitter_Order
+(twitterOrder_ID, tweet_ID, twitter_handle, medicine_ID, medicine_URL, medicine_price)
+VALUES (4522, 14367, @joe, 2541, ,‘ https://www.cvs.com/shop/cvs-health-children-s-feverreducing-suppositories-prodid-614142=14367’, 33.4 )
+INSERT INTO Shopping_Cart
+(twitterOrder_ID, no_of_items, total_amount, Twitter_handle)
+VALUES ( 4522, 1, 33.4,@joe)
+
+UseCase 3 : View the medicine orders made by a user
+SELECT mc.twitter_handle, mc.twitterOrder_ID
+FROM Medicine_Cart mc
+WHERE
+s.twitter_handle = '@pooja';
+
+UseCase 4: View the price for the medicine(Eg: Asprin)
+SELECT m.medicine_price
+FROM Medicine m 
+WHERE m.medicine = “Asprin"
+
+
