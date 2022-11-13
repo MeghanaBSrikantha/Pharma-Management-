@@ -48,6 +48,21 @@ Steps:
 Actor action: User views the price for the medicine
 System Responses: Displays the price for the medicine
 
+5.Use Case: View the total number of tweet mentions by the user
+Description - Use view the tweet mentions by user
+Actor - User
+Precondition- User must have made atleast one twitter mention
+
+Steps:
+
+Actor action: User views the twitter mentions
+System Response: Displays all the mentions made by the user
+Post Condition: System displays the total twitter mentions made by the user
+
+
+
+
+
 SQL STATEMENTS
 Use case 1 : Login to the Pharmacy Account
 INSERT INTO Pharmacy_Account
@@ -85,5 +100,16 @@ UseCase 4: View the price for the medicine(Eg: Asprin)
 SELECT m.medicine_price
 FROM Medicine m 
 WHERE m.medicine = “Asprin"
+
+Use Case: View the total number of tweet mentions by the user
+SELECT target_source(created_at, 0, 10) 
+       COUNT(1) tweet_count
+FROM   twitter 
+GROUP  BY twitter_ID(created_at, 0, 10) 
+ORDER  BY COUNT(1) DESC 
+
+
+
+
 
 
