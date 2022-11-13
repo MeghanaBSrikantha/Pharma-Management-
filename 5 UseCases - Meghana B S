@@ -1,3 +1,4 @@
+USECASES :
 
 UseCase 1 : Register for an account in Customer Health System
 
@@ -6,12 +7,99 @@ Actor : User
 Precondition : When a user wants to buy medicines from the pharmacy, he should have an account in Customer Health System.
 
 Steps:
--       Actor Action : 
-                a: If user has an account already, he will login.
-                b: If user does not have an account, he will register and then login into the new account.
--       System Responses: If user information is correct then user is registered and use case ends.
--       Post Condition : User successfully registered
--       Alternate Path : The user request is not correct or the user is not registered. Then system throws and error.
--       Error : User invalid
+- Actor Action : 
+       a: If user has an account already, he will login.
+       b: If user does not have an account, he will register and then login into the new account.
+- System Responses: If user information is correct then user is registered and use case ends.
+- Post Condition : User successfully registered
+- Alternate Path : The user request is not correct or the user is not registered. Then system throws and error.
+- Error : User invalid
 
+
+Use Case 2 : View a medicine already ordered through Twitter by a user
+
+Description: User views the medicine already ordered
+Actors: User
+Precondition: User must have made an order of the medicine 
+
+Steps: 
+- Actor action – User views the medicine from its URL
+- System Responses – medicine URL would be displayed
+- Post Condition: system displays medicine URL
+- Alternate Path : User has not placed an order
+- Error : Order not placed
+
+
+Use Case 3 : View the availability of a medicine at the Pharmacy for Users
+
+Description: User views the availability of the medicine at the Pharmacy 
+Actor: User 
+Precondition: User must have an account to check for the availability at the pharmacy
+
+Steps:
+- Actor action: User views the availability of the medicine at the pharmacy
+- System Responses: the system will check for the medicine at the pharmacy
+- Post Condition: system will display the medicine
+- Alternate Path : Medicine not available at the pharmacy
+- Error: Medicine required does not exist
+
+Use Case 4 : View medicines that have less than 10 number in the Pharmacy inventory by Pharmacists
+
+Description: Pharmacists can view any medicines less than 10 number in the inventory of the Pharmacy 
+Actor: Pharmacists 
+Precondition: Pharmacists must be logged into the system to check for the availability of medicines in the inventory.
+
+Steps:
+- Actor action: Pharmacists views the availability of the medicine at the pharmacy
+- System Responses: the system will check for the medicine at the pharmacy
+- Post Condition: system will display the medicine that is less than 10
+- Alternate Path : Medicine is available and is more than 10 number
+- Error: Medicine required is wrong
+
+
+
+
+SQL STATEMENTS
+
+Use case 1 : Register for an account in Customer Health System
+
+INSERT INTO CustomerHealth_Account
+(twitter_handle, Account_password, HealthCard_Number)
+VALUES (@meghana,Meghana03,1234);
+ 
+INSERT INTO CustomerHealth_Account
+(twitter_handle, Account_password, HealthCard_Number)
+VALUES (@pooja,pooja11,1235);
+ 
+INSERT INTO CustomerHealth_Account
+(twitter_handle, Account_password, HealthCard_Number)
+VALUES (@varshini,Varshini11,1236);
+
+
+
+UseCase 2 : View a medicine already ordered through Twitter by a user
+
+SELECT m.medicine_URL
+FROM Medicines m, twitterOrder t
+WHERE
+t.medicine_ID = m.medicine_ID AND
+t.twitter_handle = '@mary'
+
+
+
+UseCase 3: View the availability of a medicine at the Pharmacy for Users
+
+SELECT m.medicine_ID, m.medicine_Quantity
+FROM Medicine m
+WHERE 
+m.medicine_Quantity > 0;
+
+
+
+UseCase 4: View medicines that have less than 10 number in the Pharmacy inventory by Pharmacists
+
+SELECT m.medicine_ID, m.medicine_Quantity
+FROM Medicine m
+WHERE 
+m.medicine_Quantity<= 10;
 
