@@ -1,0 +1,17 @@
+
+UseCase 1 : Register for an account in Customer Health System
+
+Description : User must have an account in Customer Health System to buy medicines, else the user should register themselves.
+Actor : User
+Precondition : When a user wants to buy medicines from the pharmacy, he should have an account in Customer Health System.
+
+Steps:
+-       Actor Action : 
+                a: If user has an account already, he will login.
+                b: If user does not have an account, he will register and then login into the new account.
+-       System Responses: If user information is correct then user is registered and use case ends.
+-       Post Condition : User successfully registered
+-       Alternate Path : The user request is not correct or the user is not registered. Then system throws and error.
+-       Error : User invalid
+
+
